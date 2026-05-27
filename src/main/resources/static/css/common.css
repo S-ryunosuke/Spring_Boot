@@ -1,0 +1,113 @@
+@charset "UTF-8";
+
+/* 背景 */
+body {
+	background: linear-gradient(135deg, #f5f7fb, #e9eef7);
+	font-family: "Yu Gothic", "Hiragino Kaku Gothic ProN", sans-serif;
+	margin: 0;
+}
+
+/* 配置*/
+/* menu */
+.menu-wrapper {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+}
+
+.menu-card {
+	width: 420px;
+	padding: 50px 40px;
+	background: #fff;
+	border-radius: 16px;
+	box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+	text-align: center;
+}
+
+.menu-card h1 {
+	margin-bottom: 30px;
+	color: #333;
+}
+
+
+/* 一覧画面 */
+.list-wrapper {
+	padding: 20px;
+}
+
+/* メニューリンク（一覧上部） */
+.menu-link {
+	display: inline-block;
+	margin-bottom: 15px;
+	padding: 8px 14px;
+	background: #ff9800;
+	color: #fff;
+	text-decoration: none;
+	border-radius: 8px;
+	font-size: 14px;
+	transition: 0.2s;
+}
+
+/* ボタン */
+.btn {
+	display: inline-block;
+	padding: 14px 28px;
+	background: #ff9800;
+	color: #fff;
+	text-decoration: none;
+	border-radius: 10px;
+	font-weight: bold;
+	transition: 0.3s;
+}
+
+.btn:hover {
+	background: #f57c00;
+	transform: translateY(-2px);
+}
+
+.error {
+	text-align: center;
+	color: red;
+}
+
+table {
+	margin-left: auto;
+	margin-right: auto;
+	border-collapse: collapse;
+	border:1px solid #333;
+}
+
+table th {
+	width: 150px;
+	background-color: orange;
+	color: white;;
+	border-collapse: collapse;
+	border:1px solid #333;
+	padding: 5px;
+}
+
+table td {
+	width: 200px;
+	border-collapse: collapse;
+	border:1px solid #333;
+	padding: 5px;
+	text-align: center;
+}
+
+table.list th {
+	width: 100px;
+	border-collapse: collapse;
+	border:1px solid #333;
+	padding: 5px;
+}
+
+table.list td {
+	width: 100px;
+	border-collapse: collapse;
+	border:1px solid #333;
+	padding: 5px;
+	text-align: center;
+}
+
+

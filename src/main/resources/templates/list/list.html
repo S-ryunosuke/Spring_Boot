@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<link rel="stylesheet" type="text/css" href="../css/common.css">
+		<title>list</title>
+	</head>
+	<body>
+		<a href="../" class="menu-link">メニュー</a><br>
+			</div>
+			<div class="menu">
+				<h2>メンバ一覧画面</h2>
+			</div>
+			<table class="list">
+				<tr>
+					<th>社員ID</th>
+					<th>氏名</th>
+					<th>年齢</th>
+					<th>性別</th>
+					<th>住所</th>
+					<th>電話番号</th>
+					<th>メールアドレス</th>
+					<th>役職</th>
+					<th>事業所</th>
+					<th>詳細</th>
+					<th>更新</th>
+					<th>削除</th>
+				</tr>
+						
+				<tr th:each="member : ${members}">
+					<td th:text="${member.id}"></td>
+					<td th:text="${member.name}"></td>
+					<td th:text="${member.age}"></td>
+					<td th:text="${member.sex}"></td>
+					<td th:text="${member.address}"></td>
+					<td th:text="${member.telephone}"></td>
+					<td th:text="${member.mail}"></td>
+					<td th:text="${member.position}"></td>
+					<td th:text="${member.place}"></td>
+				
+				<td>		
+					<form action="/detail" method="post">
+						<input type="submit" value="詳細">
+					</form>
+				</td>
+				<td>
+					<form action="/update" method="post">
+						<input type="submit" value="更新">
+					</form>
+				</td>
+				<td>
+					<form action="/delete" method="post">
+						<input type="submit" value="削除">
+					</form>
+				</td>
+				</tr>
+			</table>
+		</div>
+	</body>
+</html>
