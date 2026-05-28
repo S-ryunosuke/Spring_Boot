@@ -63,5 +63,17 @@ public class MemberService {
 		//Dtoリストを返却
 		return dtoList;
 	}
+	
+	//メンバー新規登録処理
+	public void insert(MemberDto memberDto) {
+		
+		//渡って来たDtoを→Entityに変換
+		MemberEntity memberEntity = MemberDto.convertDtoToEntity(memberDto);
+		
+		//変換したEntityをDBに登録処理
+		memberRepository.save(memberEntity);
+		
+	
+	}
 
 }

@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<link rel="stylesheet" type="text/css" href="../css/common.css">
+		<title>新規登録</title>
+	</head>
+	<body>
+		<div id="wapper">
+				<a href="../" class="menu-link">メニュー</a><br>
+			<div class="menu">
+				<h2>新規登録画面</h2>
+			</div>
+			<form th:action="@{/members/add}" th:object="${memberForm}" method="post">
+				<table class="ct">
+					<tr>
+						<th>社員ID</th>
+						<td>
+							<input type="text" th:field="*{id}">
+							<div th:errors="*{id}" class="error"></div>
+						</td>
+						
+					</tr>
+					<tr>
+						<th>氏名</th>
+						<td>
+							<input type="text" th:field="*{name}">
+							<div th:errors="*{name}" class="error"></div>
+						</td>
+					</tr>
+					<tr>	
+						<th>年齢</th>
+						<td><input type="text" th:field="*{age}"></td>
+					</tr>
+					<tr>
+						<th>性別</th>
+						<td>
+							男<input type="radio" th:field="*{sex}" value="0">
+							女<input type="radio" th:field="*{sex}" value="1">
+						</td>
+					</tr>
+					<tr>
+						<th>住所</th>
+						<td><input type="text" th:field="*{address}"></td>
+					</tr>
+					<tr>
+						<th>電話番号</th>
+						<td><input type="text" th:field="*{telephone}"></td>
+					</tr>
+					<tr>
+						<th>メールアドレス</th>
+						<td><input type="text" th:field="*{mail}"></td>
+					</tr>
+					<tr>
+						<th>役職</th>
+						<td>
+							<select th:field="*{position}">
+								<option value="PO00000001">社長</option>
+								<option value="PO00000002">専務</option>
+								<option value="PO00000003">部長</option>
+								<option value="PO00000004">所長</option>
+								<option value="PO00000005">課長</option>
+								<option value="PO00000006">係長</option>
+								<option value="PO00000007">一般社員</option>
+								<option value="PO00000008">アルバイト</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<th>事業所</th>
+						<td>
+							<select th:field="*{place}">
+								<option value="PL00000001">東京本社</option>
+								<option value="PL00000002">大阪支社</option>
+								<option value="PL00000003">北海道工場</option>
+								<option value="PL00000004">広島工場</option>
+								<option value="PL00000005">埼玉工場</option>
+								<option value="PL00000006">愛知工場</option>
+								<option value="PL00000007">青森工場</option>
+								<option value="PL00000008">熊本工場</option>
+								<option value="PL00000009">岡山工場</option>
+							</select>
+						</td>
+					</tr>
+				</table>
+				<div class="menu">
+					<input type="submit" value="登録" class="btn">
+				</div>
+			</form>
+		</div>
+	</body>
+</html>

@@ -7,9 +7,10 @@
 	</head>
 	<body>
 		<a href="../" class="menu-link">メニュー</a><br>
-			</div>
 			<div class="menu">
-				<h2>メンバ一覧画面</h2>
+				<h2> メンバ一覧画面 </h2>
+					<p th:if="${message}" th:text="${message}"></p> <!--登録成功メッセージあれば表示-->
+					<a href="/members/add" class="btn">新規ユーザー登録</a>
 			</div>
 			<table class="list">
 				<tr>

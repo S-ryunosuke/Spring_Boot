@@ -1,19 +1,23 @@
 package com.example.demo.form;
 
+import jakarta.validation.constraints.NotBlank;
+
 //メンバーForm
 public class MemberForm {
 	
 	//ID
+	@NotBlank(message = "IDは必須です。")
     private String id;
     
 	//氏名
+    @NotBlank(message = "氏名は必須です。")
     private String name;
 	
 	//年齢
     private Integer age;
 	
 	//性別
-    private String sex;
+    private Integer  sex;
     
     //住所
     private String address;
@@ -55,11 +59,11 @@ public class MemberForm {
         this.age = age;
     }
 
-    public String getSex() {
+    public Integer  getSex() {
         return sex;
     }
 
-    public void setSex(String sex) {
+    public void setSex(Integer  sex) {
         this.sex = sex;
     }
     

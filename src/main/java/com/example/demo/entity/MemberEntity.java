@@ -24,7 +24,7 @@ import jakarta.persistence.Table;
 		
 		//性別
 	    @Column(name = "sex_flg")
-	    private String sex;
+	    private Integer  sex;
 	    
 	    //住所
 	    @Column(name = "address")
@@ -71,11 +71,11 @@ import jakarta.persistence.Table;
 	        this.age = age;
 	    }
 
-	    public String getSex() {
+	    public Integer  getSex() {
 	        return sex;
 	    }
 
-	    public void setSex(String sex) {
+	    public void setSex(Integer  sex) {
 	        this.sex = sex;
 	    }
 	    

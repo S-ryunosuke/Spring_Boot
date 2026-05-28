@@ -7,8 +7,9 @@ body {
 	margin: 0;
 }
 
-/* 配置*/
-/* menu */
+/* --メニュー画面用-- */
+
+/* 画面中央配置 */
 .menu-wrapper {
 	display: flex;
 	justify-content: center;
@@ -16,6 +17,7 @@ body {
 	height: 100vh;
 }
 
+/* 白いカード部分 */
 .menu-card {
 	width: 420px;
 	padding: 50px 40px;
@@ -25,16 +27,28 @@ body {
 	text-align: center;
 }
 
+/* メニュータイトル */
 .menu-card h1 {
 	margin-bottom: 30px;
 	color: #333;
 }
 
+/* --共通メニューエリア-- */
 
-/* 一覧画面 */
+/* ボタンやタイトルの中央寄せ */
+.menu {
+	text-align: center;
+	margin-top: 20px;
+}
+
+/* --一覧画面用-- */
+
+/* 一覧画面全体余白 */
 .list-wrapper {
 	padding: 20px;
 }
+
+/* -- リンク系 --*/
 
 /* メニューリンク（一覧上部） */
 .menu-link {
@@ -49,7 +63,10 @@ body {
 	transition: 0.2s;
 }
 
-/* ボタン */
+
+/* --ボタン共通-- */
+
+/* オレンジボタン */
 .btn {
 	display: inline-block;
 	padding: 14px 28px;
@@ -61,15 +78,19 @@ body {
 	transition: 0.3s;
 }
 
+/* ホバー時 */
 .btn:hover {
 	background: #f57c00;
 	transform: translateY(-2px);
 }
 
+/* --エラーメッセージ-- */
 .error {
 	text-align: center;
 	color: red;
 }
+
+/* --テーブル共通-- */
 
 table {
 	margin-left: auto;
@@ -94,6 +115,8 @@ table td {
 	padding: 5px;
 	text-align: center;
 }
+
+/* --一覧画面テーブル専用-- */
 
 table.list th {
 	width: 100px;
