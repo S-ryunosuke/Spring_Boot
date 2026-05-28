@@ -55,11 +55,10 @@ public class MemberController {
 		
 	}
 	
-	//新規登録処理
+	//新規登録処理(エラーチェック)
 	//form = Getで渡した物を受け取る
-	@PostMapping("/members/add")
-	public String add(@Valid @ModelAttribute("memberForm") MemberForm form, BindingResult result,
-			RedirectAttributes redirAttrs, Model model) {
+	@PostMapping("/members/confirm")
+	public String confirm(@Valid @ModelAttribute("memberForm") MemberForm form, BindingResult result) {
 		
 		//もしバリデーションエラーあれば
 		if (result.hasErrors()) {
@@ -69,18 +68,32 @@ public class MemberController {
 			
 		}
 		
+		//エラー無ければ、確認画面へ遷移
+		return "insert/insertConf";
+	}
+	
+	//新規登録処理(確認画面用)
+	@PostMapping("/members/add")
+	public String add(@ModelAttribute("memberForm") MemberForm form, RedirectAttributes redirAttrs) {
+
 		//Form→Dtoに変換(Dto内変換メソッド使用)
 		MemberDto memberDto = MemberDto.convertFormToDto(form);
-		
+				
 		//変換したDtoで登録処理
 		memberService.insert(memberDto);
 		
-		//成功メッセージ表示
-		redirAttrs.addFlashAttribute("message", "登録完了しました");
-		
-		//成功時一覧画面へリダイレクト
-		return "redirect:/members";
+		//完了画面で、登録した情報を表示させるためformを渡す
+		redirAttrs.addFlashAttribute("member", form);
+
+		//完了画面処理へ
+	    return "redirect:/members/complete";
+	}
 	
+	//新規登録完了画面
+	@GetMapping("/members/complete")
+	public String compiete() {
+		
+		return "insert/insertComp";
 	}
 	
 	//詳細画面
