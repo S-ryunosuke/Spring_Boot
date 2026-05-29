@@ -39,11 +39,11 @@ import jakarta.persistence.Table;
 	    private String mail;
 		
 		//役職
-	    @Column(name = "position_id")
+	    @Column(name = "position_id") 
 	    private String position;
 		
 		//事業所
-	    @Column(name = "place_id")
+	    @Column(name = "place_id") 
 	    private String place;
 	    
 	    

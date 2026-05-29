@@ -14,6 +14,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.example.demo.dto.MemberDto;
 import com.example.demo.form.MemberForm;
 import com.example.demo.service.MemberService;
+import com.example.demo.service.PlaceService;
+import com.example.demo.service.PositionService;
 
 
 @Controller
@@ -21,6 +23,12 @@ public class MemberController {
 	
 	@Autowired
 	private MemberService memberService;
+	
+	@Autowired
+	private PositionService positionService;
+	
+	@Autowired
+	private PlaceService placeService;
 		
 	//初期画面
 	@GetMapping("/")
@@ -50,26 +58,42 @@ public class MemberController {
 		//formを渡して、入力値を入れる
 		model.addAttribute("memberForm", new MemberForm());
 		
+		//役職リストを渡す
+		model.addAttribute("positionList",positionService.findAll());
+		
+		//事業所リストを渡す
+		model.addAttribute("placeList",placeService.findAll());
+		
 		//新規登録画面表示
 		return "insert/insert";
 		
 	}
 	
 	//新規登録処理(エラーチェック)
-	//form = Getで渡した物を受け取る
+	//form入力された物を受け取る
 	@PostMapping("/members/confirm")
-	public String confirm(@Valid @ModelAttribute("memberForm") MemberForm form, BindingResult result) {
+	public String confirm(@Valid @ModelAttribute("memberForm") MemberForm form, BindingResult result, Model model) {
 		
 		//もしバリデーションエラーあれば
 		if (result.hasErrors()) {
+			
+			//再度役職リストを渡す
+			model.addAttribute("positionList",positionService.findAll());
+			
+			//再度事業所リストを渡す
+			model.addAttribute("placeList",placeService.findAll());
 			
 			//登録画面、再表示
 			return "insert/insert";
 			
 		}
 		
+		 //エラー無ければ、確認画面用にformを渡す
+		model.addAttribute("memberForm",form);
+		
 		//エラー無ければ、確認画面へ遷移
 		return "insert/insertConf";
+		
 	}
 	
 	//新規登録処理(確認画面用)
@@ -84,7 +108,7 @@ public class MemberController {
 		
 		//完了画面で、登録した情報を表示させるためformを渡す
 		redirAttrs.addFlashAttribute("member", form);
-
+		
 		//完了画面処理へ
 	    return "redirect:/members/complete";
 	}
