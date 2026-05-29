@@ -75,5 +75,19 @@ public class MemberService {
 		
 	
 	}
+	
+	//メンバーの返却
+	public MemberDto findById(String memberId) {
+		
+		//DBからIDを元に取得
+		MemberEntity memberEntity = memberRepository.findById(memberId).orElse(null);
+		
+		//取得したEntityをDtoに変換
+		MemberDto memberDto = MemberDto.convertEntityToDto(memberEntity);
+		
+		//変換したDtoを返却
+		return memberDto;
+		
+	}
 
 }

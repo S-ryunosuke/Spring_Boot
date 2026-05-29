@@ -147,5 +147,26 @@ public class MemberDto {
 		return memberEntity;
 			
 	}
+	
+	//Entity→Dtoへの変換メソッド
+	public static MemberDto convertEntityToDto(MemberEntity memberEntity) {
+		
+		//Dto生成し、そこに渡ってきたEntityの値を入れる
+		MemberDto memberDto = new MemberDto();
+		
+		memberDto.setId(memberEntity.getId());
+		memberDto.setName(memberEntity.getName());
+		memberDto.setAge(memberEntity.getAge());
+		memberDto.setSex(memberEntity.getSex());
+		memberDto.setAddress(memberEntity.getAddress());
+		memberDto.setTelephone(memberEntity.getTelephone());
+		memberDto.setMail(memberEntity.getMail());
+		memberDto.setPosition(memberEntity.getPosition());
+		memberDto.setPlace(memberEntity.getPlace());
+			
+		//Dtoを返す
+		return memberDto;
+		
+	}
 
 }

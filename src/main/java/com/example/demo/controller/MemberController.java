@@ -1,5 +1,7 @@
 package com.example.demo.controller;
 
+import java.util.Objects;
+
 import jakarta.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +11,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.demo.dto.MemberDto;
@@ -106,8 +109,8 @@ public class MemberController {
 		//変換したDtoで登録処理
 		memberService.insert(memberDto);
 		
-		//完了画面で、登録した情報を表示させるためformを渡す
-		redirAttrs.addFlashAttribute("member", form);
+		//完了画面で、登録した情報を表示させるためメンバーIDを渡す。
+		redirAttrs.addAttribute("memberid", form.getId());
 		
 		//完了画面処理へ
 	    return "redirect:/members/complete";
@@ -115,11 +118,28 @@ public class MemberController {
 	
 	//新規登録完了画面
 	@GetMapping("/members/complete")
-	public String compiete() {
+	public String compiete(@RequestParam("memberid")String memberId, Model model) {
 		
+		//IDを元に登録した情報を取得する
+		MemberDto memberDto = memberService.findById(memberId);
+		
+		//もし取得した情報がnullなら
+		if (Objects.isNull(memberDto)) {
+			
+			model.addAttribute("errorMessege","登録した情報が見つかりません。");
+				
+				//エラー画面へ遷移
+				return "error/error";
+			}
+		
+		//取得した情報を完了画面へ渡す
+		model.addAttribute("member",memberDto);
+		
+		//完了画面へ遷移
 		return "insert/insertComp";
-	}
-	
+			
+		}
+		
 	//詳細画面
 	@PostMapping("/detail")
 	public String detail() {
