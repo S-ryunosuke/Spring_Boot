@@ -1,5 +1,8 @@
 package com.example.demo.dto;
 
+import com.example.demo.entity.MemberEntity;
+import com.example.demo.form.MemberForm;
+
 //メンバーDto
 public class MemberDto {
 
@@ -13,7 +16,7 @@ public class MemberDto {
 	private Integer age;
 
 	//性別
-	private String sex;
+	private Integer  sex;
 	
 	//住所
 	private String address;
@@ -54,11 +57,11 @@ public class MemberDto {
 		this.age = age;
 	}
 
-	public String getSex() {
+	public Integer  getSex() {
 		return sex;
 	}
 
-	public void setSex(String sex) {
+	public void setSex(Integer  sex) {
 		this.sex = sex;
 		
 	}
@@ -102,6 +105,68 @@ public class MemberDto {
 
 	public void setPlace(String place) {
 		this.place = place;
+	}
+	
+	//Form→Dtoへの変換メソッド
+	public static MemberDto convertFormToDto(MemberForm memberForm) {
+		
+		//Dto生成し、そこに渡ってきたformの値を入れる
+		MemberDto memberDto = new MemberDto();
+
+		memberDto.setId(memberForm.getId());
+		memberDto.setName(memberForm.getName());
+		memberDto.setAge(memberForm.getAge());
+		memberDto.setSex(memberForm.getSex());
+		memberDto.setAddress(memberForm.getAddress());
+		memberDto.setTelephone(memberForm.getTelephone());
+		memberDto.setMail(memberForm.getMail());
+		memberDto.setPosition(memberForm.getPosition());
+		memberDto.setPlace(memberForm.getPlace());
+		
+		//Dtoを返す
+		return memberDto;
+	}
+	
+	//Dto→Entityへの変換メソッド
+	public static MemberEntity convertDtoToEntity(MemberDto memberDto) {
+			
+		//Entity生成し、そこに渡ってきたDtoの値を入れる
+		MemberEntity memberEntity = new MemberEntity();
+
+		memberEntity.setId(memberDto.getId());
+		memberEntity.setName(memberDto.getName());
+		memberEntity.setAge(memberDto.getAge());
+		memberEntity.setSex(memberDto.getSex());
+		memberEntity.setAddress(memberDto.getAddress());
+		memberEntity.setTelephone(memberDto.getTelephone());
+		memberEntity.setMail(memberDto.getMail());
+		memberEntity.setPosition(memberDto.getPosition());
+		memberEntity.setPlace(memberDto.getPlace());
+			
+		//Entityを返す
+		return memberEntity;
+			
+	}
+	
+	//Entity→Dtoへの変換メソッド
+	public static MemberDto convertEntityToDto(MemberEntity memberEntity) {
+		
+		//Dto生成し、そこに渡ってきたEntityの値を入れる
+		MemberDto memberDto = new MemberDto();
+		
+		memberDto.setId(memberEntity.getId());
+		memberDto.setName(memberEntity.getName());
+		memberDto.setAge(memberEntity.getAge());
+		memberDto.setSex(memberEntity.getSex());
+		memberDto.setAddress(memberEntity.getAddress());
+		memberDto.setTelephone(memberEntity.getTelephone());
+		memberDto.setMail(memberEntity.getMail());
+		memberDto.setPosition(memberEntity.getPosition());
+		memberDto.setPlace(memberEntity.getPlace());
+			
+		//Dtoを返す
+		return memberDto;
+		
 	}
 
 }
